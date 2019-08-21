@@ -9,7 +9,7 @@ import { HttpService } from '../http.service';
 export class TableComponent implements OnInit {
 
   brews: Object;
-
+  
   displayedColumns: string[] = ['id','name', 'country', 'state', 'website_url'];
 
   constructor(
