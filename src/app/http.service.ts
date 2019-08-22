@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { delay } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -11,7 +12,10 @@ export class HttpService {
   ) { }
 
 
-  getBeer() {
-    return this.http.get('https://api.openbrewerydb.org/breweries')
+  getBeer() { 
+    return this.http.get('https://api.openbrewerydb.org/breweries');
+           
+    
+    
   }
 }

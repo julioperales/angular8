@@ -13,12 +13,27 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatTableModule} from '@angular/material/table';
 import { CdkTableModule } from '@angular/cdk/table';
 
+import {MatPaginatorModule} from '@angular/material/paginator';
+import { TableComplexComponent } from './table-complex/table-complex.component';
+import { MatSortModule } from '@angular/material/sort';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import {MatInputModule} from '@angular/material/input';
+
+import { LoaderComponent } from './components/shared/loader/loader.component';
+import { LoaderService } from './services/loader.service';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { LoaderInterceptor } from './interceptors/loader.interceptor';
+
+
+
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     ListComponent,
     TableComponent,
+    TableComplexComponent,
+    LoaderComponent,
     
   ],
   imports: [
@@ -28,11 +43,20 @@ import { CdkTableModule } from '@angular/cdk/table';
     HttpClientModule,
     BrowserAnimationsModule,
     MatTableModule,    
-    CdkTableModule
+    CdkTableModule,
+    MatPaginatorModule,
+    MatSortModule,
+    MatProgressSpinnerModule,
+    MatInputModule,
+    MatProgressSpinnerModule
   ],
 
 
-  providers: [],
+  providers: [
+    LoaderService  ,
+    { provide: HTTP_INTERCEPTORS, useClass: LoaderInterceptor, multi: true }  
+  
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

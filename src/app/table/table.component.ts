@@ -11,6 +11,7 @@ export class TableComponent implements OnInit {
   brews: Object;
   
   displayedColumns: string[] = ['id','name', 'country', 'state', 'website_url'];
+  
 
   constructor(
     private _http: HttpService
@@ -20,7 +21,7 @@ export class TableComponent implements OnInit {
     this._http.getBeer().subscribe(
 
       data => {
-        this.brews = data
+        this.brews = data;
         console.log(this.brews);
       }
     )
