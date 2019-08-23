@@ -18,11 +18,15 @@ import { TableComplexComponent } from './table-complex/table-complex.component';
 import { MatSortModule } from '@angular/material/sort';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import {MatInputModule} from '@angular/material/input';
+import { MatIconModule } from '@angular/material/icon';
+import { MatButtonModule } from '@angular/material/button';
+import { MatDialogModule } from '@angular/material/dialog';
 
 import { LoaderComponent } from './components/shared/loader/loader.component';
 import { LoaderService } from './services/loader.service';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { LoaderInterceptor } from './interceptors/loader.interceptor';
+import { DialogComponent } from './dialog/dialog.component';
 
 
 
@@ -34,6 +38,7 @@ import { LoaderInterceptor } from './interceptors/loader.interceptor';
     TableComponent,
     TableComplexComponent,
     LoaderComponent,
+    DialogComponent,
     
   ],
   imports: [
@@ -48,7 +53,10 @@ import { LoaderInterceptor } from './interceptors/loader.interceptor';
     MatSortModule,
     MatProgressSpinnerModule,
     MatInputModule,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
+    MatIconModule,
+    MatButtonModule,
+    MatDialogModule 
   ],
 
 
