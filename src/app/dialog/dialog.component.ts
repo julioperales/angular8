@@ -8,12 +8,31 @@ import { MatDialog, MatDialogConfig, MatDialogRef, MAT_DIALOG_SCROLL_STRATEGY, M
 })
 
 
-export class DialogComponent implements OnInit {
+export class DialogComponent{
 
-  constructor(public dialog: MatDialogRef<DialogComponent>,
-    @Inject(MAT_DIALOG_DATA) data:any) { }
+  title: string = "";
+  message: string = "";
+  cancelButtonText = "Cancel";
+  confirmButtonText = "Save";
 
-  ngOnInit() {
+
+  constructor(
+    @Inject(MAT_DIALOG_DATA) private data: any,
+    private dialogRef: MatDialogRef<DialogComponent>) {
+    if (data) {
+      this.title = data.title || this.title;
+      this.message = data.message || this.message;
+      if (data.buttonText) {
+        this.cancelButtonText = data.buttonText.cancel || this.cancelButtonText;
+      }
+    }
+    this.dialogRef.updateSize('300vw', '300vw');
   }
+
+  onConfirmClick(): void {
+    this.dialogRef.close(true);
+  }
+
+
 
 }
